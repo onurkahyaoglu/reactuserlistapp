@@ -5,7 +5,7 @@ import User from "./User";
 class Users extends Component{
 
     render(){
-        const {users} = this.props;//Burada App JS den gelen users propsunu sayfa içerisine alıyoruz.
+        const {users, deleteUser} = this.props;//Burada App JS den gelen users propsunu sayfa içerisine alıyoruz.
 
 
         return(
@@ -27,6 +27,7 @@ class Users extends Component{
                                 id = {id}
                                 name = {name}
                                 email = {email}
+                                deleteUser = {deleteUser}
                             /> // Burada bu sayfa içerisindeki AppJS den gelen users nesnesini dönerek her birini UserJS e yolluyoruz
                         })
                     }

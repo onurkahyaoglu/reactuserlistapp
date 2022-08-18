@@ -4,8 +4,11 @@ import Users from "./components/Users";
 
 class App extends Component {
 
+
   constructor(props){
     super(props);
+    this.deleteUser = this.deleteUser.bind(this);
+
     this.state = {
       users: [
         {
@@ -26,6 +29,15 @@ class App extends Component {
       ]
     };
   }
+
+  deleteUser(id){
+    let updatedUsers = this.state.users;
+    updatedUsers = updatedUsers.filter(users => users.id !== id);
+    this.setState({
+      users: updatedUsers
+    })
+  }
+
   render(){
     return (
     <div className="container">
@@ -33,7 +45,7 @@ class App extends Component {
       <hr></hr>
       <AddUser></AddUser>
       <hr></hr>
-      <Users users = {this.state.users}></Users>
+      <Users deleteUser = {this.deleteUser} users = {this.state.users}></Users>
     </div>
       );
   }

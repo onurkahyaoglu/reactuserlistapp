@@ -17,6 +17,20 @@ class AddUser extends Component{
             [e.target.name] : e.target.value
         })
     }
+    onAddSubmit(e){
+        const{addUser} = this.props;
+        const {name, email} = this.state;
+
+        const newUser = {
+            id: Math.random(),
+            name: name,
+            email: email
+        };
+
+        addUser(newUser);
+    
+        e.preventDefault();
+    }
 
 
     render(){
@@ -25,7 +39,7 @@ class AddUser extends Component{
            <div className="card">
                 <h4 className="card-header">Add New User</h4>
                 <div className="card-body">
-                    <form>
+                    <form onSubmit={this.onAddSubmit.bind(this)}>
                         <div className="form-group">
                             <label htmlFor="name">Name</label>
                             <input type="text" name="name" id="name" placeholder="Enter Name" className="form-control" value={name} onChange={this.onNameChange.bind(this)}/>

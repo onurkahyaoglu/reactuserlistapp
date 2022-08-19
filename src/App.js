@@ -7,8 +7,6 @@ class App extends Component {
 
   constructor(props){
     super(props);
-    this.deleteUser = this.deleteUser.bind(this);
-
     this.state = {
       users: [
         {
@@ -28,6 +26,18 @@ class App extends Component {
         },
       ]
     };
+    this.deleteUser = this.deleteUser.bind(this);
+    this.addUser = this.addUser.bind(this);
+  }
+
+  addUser(newUser){
+    let updatedUsers = this.state.users;
+
+    updatedUsers.push(newUser);
+    
+    this.setState({
+      users: updatedUsers
+    })
   }
 
   deleteUser(id){
@@ -43,7 +53,7 @@ class App extends Component {
     <div className="container">
       <h4>User App</h4>
       <hr></hr>
-      <AddUser></AddUser>
+      <AddUser addUser= {this.addUser} />
       <hr></hr>
       <Users deleteUser = {this.deleteUser} users = {this.state.users}></Users>
     </div>
